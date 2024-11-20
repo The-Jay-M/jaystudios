@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Jay Studios | Your Ultimate Tech & AI Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>TJVAPP - 400+ Free Digital Assets | The Jay Studios</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #0066ff;
-            --primary-red: #ff3366;
-            --primary-purple: #6600ff;
-            --dark: #0a0a0f;
-            --darker: #050508;
+            --orange: #FF6B00;
+            --green: #00CC44;
+            --dark: #0a0f0d;
+            --darker: #050807;
             --light: #ffffff;
-            --glass: rgba(102, 0, 255, 0.1);
+            --glass: rgba(255, 107, 0, 0.1);
         }
 
         * {
@@ -24,356 +23,199 @@
         }
 
         body {
-            background: var(--dark);
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--darker);
             color: var(--light);
-            font-family: 'Roboto', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
+            background-image: url('https://pfst.cf2.poecdn.net/base/image/8f5c00a25dd9eb32ff3ae79d513f152d9473d4e00b641cde4d7c91c62ea968db?w=576&h=1024&pmaid=211598221');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
         }
 
-        .gradient-bg {
+        .overlay {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                45deg,
-                rgba(0, 102, 255, 0.1),
-                rgba(255, 51, 102, 0.1),
-                rgba(102, 0, 255, 0.1)
-            );
-            z-index: -1;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 8, 7, 0.85);
+            z-index: 0;
         }
 
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(10, 10, 15, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--primary-purple);
-        }
-
-        .nav-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Mountains of Christmas', cursive;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--light);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            background: linear-gradient(45deg, var(--primary-blue), var(--primary-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stats {
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            background: rgba(10, 10, 15, 0.9);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            display: flex;
-            gap: 1rem;
-            font-size: 0.9rem;
-            z-index: 1000;
-        }
-
-        .stat {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .stat i {
-            color: var(--primary-purple);
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
+        .content {
             position: relative;
-            overflow: hidden;
+            z-index: 1;
         }
 
-        .hero-content {
-            max-width: 800px;
-            z-index: 2;
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .hero-title {
-            font-family: 'Mountains of Christmas', cursive;
+        .counter-card {
+            background: rgba(255, 107, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid;
+            transition: transform 0.3s ease;
+        }
+
+        .counter-card:nth-child(odd) {
+            border-color: var(--orange);
+        }
+
+        .counter-card:nth-child(even) {
+            border-color: var(--green);
+        }
+
+        .counter-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .counter-number {
             font-size: 4rem;
+            font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary-blue), var(--primary-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        .hero-subtitle {
+        .counter-card:nth-child(odd) .counter-number {
+            color: var(--orange);
+        }
+
+        .counter-card:nth-child(even) .counter-number {
+            color: var(--green);
+        }
+
+        .counter-label {
             font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .services-grid {
+        .preview-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 4rem 2rem;
+            padding: 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .service-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary-blue), var(--primary-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .service-title {
-            font-family: 'Mountains of Christmas', cursive;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-description {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .carousel {
-            max-width: 1400px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-            position: relative;
+        .preview-card {
+            background: rgba(5, 8, 7, 0.9);
+            border-radius: 12px;
             overflow: hidden;
-        }
-
-        .carousel-title {
-            font-family: 'Mountains of Christmas', cursive;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            background: linear-gradient(45deg, var(--primary-blue), var(--primary-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .carousel-container {
-            display: flex;
             transition: transform 0.3s ease;
-            gap: 2rem;
         }
 
-        .carousel-item {
-            min-width: 300px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .preview-card:hover {
+            transform: translateY(-5px);
         }
 
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .carousel-nav button {
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .carousel-nav button:hover {
-            color: var(--primary-purple);
-        }
-
-        .about-section {
-            max-width: 1400px;
-            margin: 4rem auto;
-            padding: 2rem;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .author-image {
+        .preview-image {
             width: 100%;
-            aspect-ratio: 1;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary-blue), var(--primary-red));
-            padding: 5px;
-        }
-
-        .author-image img {
-            width: 100%;
-            height: 100%;
+            height: 200px;
             object-fit: cover;
-            border-radius: 50%;
         }
 
-        .about-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
+        .preview-content {
+            padding: 1.5rem;
         }
 
-        .about-title {
-            font-family: 'Mountains of Christmas', cursive;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, var(--primary-blue), var(--primary-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .preview-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--orange);
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, var(--orange), var(--green));
+            color: var(--light);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .download-btn:hover {
+            opacity: 0.9;
         }
 
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .about-section {
+            .counter-grid {
                 grid-template-columns: 1fr;
-                text-align: center;
+                padding: 1rem;
             }
 
-            .author-image {
-                max-width: 300px;
-                margin: 0 auto;
+            .preview-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="gradient-bg"></div>
-
-    <nav class="nav">
-        <div class="nav-content">
-            <a href="#" class="logo">
-                <i class="fas fa-code"></i>
-                The Jay Studios
-            </a>
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="counter-grid">
+            <div class="counter-card">
+                <div class="counter-number">100+</div>
+                <div class="counter-label">Free Images</div>
+            </div>
+            <div class="counter-card">
+                <div class="counter-number">100+</div>
+                <div class="counter-label">HTML Templates</div>
+            </div>
+            <div class="counter-card">
+                <div class="counter-number">100+</div>
+                <div class="counter-label">3D Models</div>
+            </div>
+            <div class="counter-card">
+                <div class="counter-number">100+</div>
+                <div class="counter-label">PC Games</div>
+            </div>
         </div>
-    </nav>
 
-    <div class="stats">
-        <div class="stat">
-            <i class="fas fa-users"></i>
-            <span id="activeUsers">247</span> active
-        </div>
-        <div class="stat">
-            <i class="fas fa-eye"></i>
-            <span id="totalVisitors">1,234,567</span> total
+        <div class="preview-grid">
+            <!-- Sample preview cards with real image links -->
+            <div class="preview-card">
+                <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" class="preview-image" alt="Web Template">
+                <div class="preview-content">
+                    <h3 class="preview-title">Modern Portfolio Template</h3>
+                    <p>Clean and responsive HTML5/CSS3 template</p>
+                    <button class="download-btn">Download Free</button>
+                </div>
+            </div>
+            <div class="preview-card">
+                <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee" class="preview-image" alt="3D Model">
+                <div class="preview-content">
+                    <h3 class="preview-title">Sci-Fi Character Model</h3>
+                    <p>High-poly 3D model with textures</p>
+                    <button class="download-btn">Download Free</button>
+                </div>
+            </div>
+            <div class="preview-card">
+                <img src="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg" class="preview-image" alt="Game Asset">
+                <div class="preview-content">
+                    <h3 class="preview-title">RPG Game Assets</h3>
+                    <p>Complete game asset pack</p>
+                    <button class="download-btn">Download Free</button>
+                </div>
+            </div>
         </div>
     </div>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Welcome to The Jay Studios</h1>
-            <p class="hero-subtitle">Your one-stop destination for AI-powered creativity, web templates, games, and more!</p>
-        </div>
-    </section>
-
-    <div class="services-grid">
-        <div class="service-card">
-            <i class="fas fa-laptop-code service-icon"></i>
-            <h3 class="service-title">Website Templates</h3>
-            <p class="service-description">Professional, responsive templates for every need. Mobile, web, and desktop solutions.</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-robot service-icon"></i>
-            <h3 class="service-title">AI Content</h3>
-            <p class="service-description">Generate images, songs, videos, and books using cutting-edge AI technology.</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-gamepad service-icon"></i>
-            <h3 class="service-title">Gaming Hub</h3>
-            <p class="service-description">Well-developed games across all platforms. From casual to competitive.</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-palette service-icon"></i>
-            <h3 class="service-title">Art & Design</h3>
-            <p class="service-description">Coloring pages, traditional art, and 3D models created in Blender.</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-book service-icon"></i>
-            <h3 class="service-title">Comics & Blog</h3>
-            <p class="service-description">Read comics and stay updated with the latest tech trends.</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-money-bill-wave service-icon"></i>
-            <h3 class="service-title">Fintech Solutions</h3>
-            <p class="service-description">Explore the future of finance with our fintech services.</p>
-        </div>
-    </div>
-
-    <section class="about-section">
-        <div class="author-image">
-            <!-- Placeholder for author image -->
-            <div style="width: 100%; height: 100%; background: var(--darker);"></div>
-        </div>
-        <div class="about-content">
-            <h2 class="about-title">About Jerry</h2>
-            <p>Hey there! I'm Jerry, just your friendly neighborhood tech nerd who decided to create something awesome. I believe in making technology accessible and fun for everyone. This platform is my way of sharing my passion for all things tech, from AI to gaming, web development to digital art.</p>
-            <p>The Jay Studios started as a simple idea: create a space where people could access cutting-edge tech tools and resources without the complexity. Whether you're a developer, creator, or just someone curious about technology, there's something here for you!</p>
-        </div>
-    </section>
-
-    <script>
-        // Simulated active users counter
-        setInterval(() => {
-            const activeUsers = document.getElementById('activeUsers');
-            const current = parseInt(activeUsers.textContent);
-            activeUsers.textContent = current + Math.floor(Math.random() * 3) - 1;
-        }, 5000);
-
-        // Simulated total visitors counter
-        setInterval(() => {
-            const totalVisitors = document.getElementById('totalVisitors');
-            const current = parseInt(totalVisitors.textContent.replace(/,/g, ''));
-            totalVisitors.textContent = (current + Math.floor(Math.random() * 5)).toLocaleString();
-        }, 10000);
-    </script>
 </body>
 </html>
