@@ -13,7 +13,6 @@
             --dark: #0a0f0d;
             --darker: #050807;
             --light: #ffffff;
-            --glass: rgba(255, 107, 0, 0.1);
         }
 
         * {
@@ -29,7 +28,58 @@
             background-image: url('https://pfst.cf2.poecdn.net/base/image/8f5c00a25dd9eb32ff3ae79d513f152d9473d4e00b641cde4d7c91c62ea968db?w=576&h=1024&pmaid=211598221');
             background-size: cover;
             background-attachment: fixed;
-            background-position: center;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(5, 8, 7, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--orange);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-symbol {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--orange);
+        }
+
+        .logo-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--orange);
         }
 
         .overlay {
@@ -45,6 +95,7 @@
         .content {
             position: relative;
             z-index: 1;
+            padding-top: 80px;
         }
 
         .counter-grid {
@@ -63,7 +114,7 @@
             padding: 2rem;
             text-align: center;
             border: 2px solid;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s;
         }
 
         .counter-card:nth-child(odd) {
@@ -113,11 +164,7 @@
             background: rgba(5, 8, 7, 0.9);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .preview-card:hover {
-            transform: translateY(-5px);
+            transition: transform 0.3s;
         }
 
         .preview-image {
@@ -147,20 +194,13 @@
             cursor: pointer;
             width: 100%;
             margin-top: 1rem;
-            transition: opacity 0.3s ease;
-        }
-
-        .download-btn:hover {
-            opacity: 0.9;
         }
 
         @media (max-width: 768px) {
-            .counter-grid {
-                grid-template-columns: 1fr;
-                padding: 1rem;
+            .nav-menu {
+                display: none;
             }
-
-            .preview-grid {
+            .counter-grid, .preview-grid {
                 grid-template-columns: 1fr;
                 padding: 1rem;
             }
@@ -168,6 +208,19 @@
     </style>
 </head>
 <body>
+    <header class="navbar">
+        <div class="logo">
+            <div class="logo-symbol">&lt;/&gt;</div>
+            <div class="logo-text">TJVAPP</div>
+        </div>
+        <nav class="nav-menu">
+            <a href="#" class="nav-link active">Home</a>
+            <a href="#" class="nav-link">Templates</a>
+            <a href="#" class="nav-link">Models</a>
+            <a href="#" class="nav-link">Games</a>
+            <a href="#" class="nav-link">Images</a>
+        </nav>
+    </header>
     <div class="overlay"></div>
     <div class="content">
         <div class="counter-grid">
@@ -188,9 +241,7 @@
                 <div class="counter-label">PC Games</div>
             </div>
         </div>
-
         <div class="preview-grid">
-            <!-- Sample preview cards with real image links -->
             <div class="preview-card">
                 <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" class="preview-image" alt="Web Template">
                 <div class="preview-content">
