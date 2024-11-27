@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TJVAPP - Download 400+ free digital assets including templates, 3D models, games, and images | The Jay Studios">
+    <meta name="keywords" content="digital assets, free templates, 3D models, games, images, web resources">
+    <meta name="author" content="The Jay Studios">
+    <meta property="og:title" content="TJVAPP - 400+ Free Digital Assets">
+    <meta property="og:description" content="Download free templates, 3D models, games, and images for your projects">
+    <meta property="og:type" content="website">
     <title>TJVAPP - 400+ Free Digital Assets | The Jay Studios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -13,12 +21,17 @@
             --dark: #0a0f0d;
             --darker: #050807;
             --light: #ffffff;
+            --transition: 0.3s ease;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -28,6 +41,7 @@
             background-image: url('https://pfst.cf2.poecdn.net/base/image/8f5c00a25dd9eb32ff3ae79d513f152d9473d4e00b641cde4d7c91c62ea968db?w=576&h=1024&pmaid=211598221');
             background-size: cover;
             background-attachment: fixed;
+            line-height: 1.6;
         }
 
         .navbar {
@@ -38,17 +52,25 @@
             z-index: 1000;
             background: rgba(5, 8, 7, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--orange);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.8rem 2rem;
+            background: rgba(5, 8, 7, 0.98);
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 1rem;
+            text-decoration: none;
         }
 
         .logo-symbol {
@@ -56,6 +78,7 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--orange);
+            transition: var(--transition);
         }
 
         .logo-text {
@@ -63,6 +86,11 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--green);
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-symbol {
+            transform: rotate(10deg);
         }
 
         .nav-menu {
@@ -75,7 +103,25 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 1.1rem;
-            transition: color 0.3s;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
         }
 
         .nav-link:hover {
@@ -96,6 +142,7 @@
             position: relative;
             z-index: 1;
             padding-top: 80px;
+            min-height: 100vh;
         }
 
         .counter-grid {
@@ -110,11 +157,13 @@
         .counter-card {
             background: rgba(255, 107, 0, 0.1);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 2rem;
             text-align: center;
             border: 2px solid;
-            transition: transform 0.3s;
+            transition: transform var(--transition);
+            cursor: pointer;
         }
 
         .counter-card:nth-child(odd) {
@@ -126,7 +175,7 @@
         }
 
         .counter-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.02);
         }
 
         .counter-number {
@@ -134,6 +183,9 @@
             font-weight: 800;
             margin-bottom: 1rem;
             font-family: 'JetBrains Mono', monospace;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
         }
 
         .counter-card:nth-child(odd) .counter-number {
@@ -149,6 +201,9 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s 0.2s forwards;
         }
 
         .preview-grid {
@@ -164,13 +219,26 @@
             background: rgba(5, 8, 7, 0.9);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s forwards;
+        }
+
+        .preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .preview-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .preview-card:hover .preview-image {
+            transform: scale(1.05);
         }
 
         .preview-content {
@@ -194,25 +262,90 @@
             cursor: pointer;
             width: 100%;
             margin-top: 1rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
         }
 
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
+            .mobile-menu-btn {
+                display: block;
             }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(5, 8, 7, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                padding: 2rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
             .counter-grid, .preview-grid {
                 grid-template-columns: 1fr;
                 padding: 1rem;
+            }
+
+            .counter-number {
+                font-size: 3rem;
             }
         }
     </style>
 </head>
 <body>
     <header class="navbar">
-        <div class="logo">
-            <div class="logo-symbol">&lt;/&gt;</div>
+        <a href="#" class="logo" aria-label="TJVAPP Home">
+            <div class="logo-symbol" aria-hidden="true">&lt;/&gt;</div>
             <div class="logo-text">TJVAPP</div>
-        </div>
+        </a>
+        <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+            <i class="fas fa-bars"></i>
+        </button>
         <nav class="nav-menu">
             <a href="#" class="nav-link active">Home</a>
             <a href="template.html" class="nav-link">Templates</a>
@@ -221,52 +354,83 @@
             <a href="#" class="nav-link">Images</a>
         </nav>
     </header>
-    <div class="overlay"></div>
-    <div class="content">
-        <div class="counter-grid">
-            <div class="counter-card">
-                <div class="counter-number">100+</div>
-                <div class="counter-label">Free Images</div>
-            </div>
-            <div class="counter-card">
-                <div class="counter-number">100+</div>
-                <div class="counter-label">HTML Templates</div>
-            </div>
-            <div class="counter-card">
-                <div class="counter-number">100+</div>
-                <div class="counter-label">3D Models</div>
-            </div>
-            <div class="counter-card">
-                <div class="counter-number">100+</div>
-                <div class="counter-label">PC Games</div>
-            </div>
-        </div>
-        <div class="preview-grid">
-            <div class="preview-card">
-                <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" class="preview-image" alt="Web Template">
-                <div class="preview-content">
-                    <h3 class="preview-title">Modern Portfolio Template</h3>
-                    <p>Clean and responsive HTML5/CSS3 template</p>
-                    <button class="download-btn">Download Free</button>
+    <div class="overlay" aria-hidden="true"></div>
+    <main class="content">
+        <section class="counter-section" aria-label="Statistics">
+            <div class="counter-grid">
+                <div class="counter-card">
+                    <div class="counter-number">100+</div>
+                    <div class="counter-label">Free Images</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-number">100+</div>
+                    <div class="counter-label">HTML Templates</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-number">100+</div>
+                    <div class="counter-label">3D Models</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-number">100+</div>
+                    <div class="counter-label">PC Games</div>
                 </div>
             </div>
-            <div class="preview-card">
-                <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee" class="preview-image" alt="3D Model">
-                <div class="preview-content">
-                    <h3 class="preview-title">Sci-Fi Character Model</h3>
-                    <p>High-poly 3D model with textures</p>
-                    <button class="download-btn">Download Free</button>
-                </div>
+        </section>
+        <section class="preview-section" aria-label="Featured content">
+            <div class="preview-grid">
+                <article class="preview-card">
+                    <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg" class="preview-image" alt="Modern portfolio template preview showing a clean design layout">
+                    <div class="preview-content">
+                        <h3 class="preview-title">Modern Portfolio Template</h3>
+                        <p>Clean and responsive HTML5/CSS3 template</p>
+                        <button class="download-btn">Download Free</button>
+                    </div>
+                </article>
+                <article class="preview-card">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee" class="preview-image" alt="3D sci-fi character model preview">
+                    <div class="preview-content">
+                        <h3 class="preview-title">Sci-Fi Character Model</h3>
+                        <p>High-poly 3D model with textures</p>
+                        <button class="download-btn">Download Free</button>
+                    </div>
+                </article>
+                <article class="preview-card">
+                    <img src="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg" class="preview-image" alt="RPG game assets pack preview">
+                    <div class="preview-content">
+                        <h3 class="preview-title">RPG Game Assets</h3>
+                        <p>Complete game asset pack</p>
+                        <button class="download-btn">Download Free</button>
+                    </div>
+                </article>
             </div>
-            <div class="preview-card">
-                <img src="https://images.pexels.com/photos/2007647/pexels-photo-2007647.jpeg" class="preview-image" alt="Game Asset">
-                <div class="preview-content">
-                    <h3 class="preview-title">RPG Game Assets</h3>
-                    <p>Complete game asset pack</p>
-                    <button class="download-btn">Download Free</button>
-                </div>
-            </div>
-        </div>
-    </div>
+        </section>
+    </main>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
